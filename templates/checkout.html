@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--Main layout-->
+<main class="mt-5 pt-1 ">
+  <div class="container wow fadeIn ">
+
+    <!-- Heading -->
+    <h2 class="my-5 h2 text-center">Checkout form</h2>
+    <!--Grid row-->
+    <div class="row justify-content-center">
+
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+
+        <!--Card-->
+        <div class="card">
+          <form method="POST" class="card-body">
+            {% csrf_token %}
+  
+            <h5>Shipping address</h5>
+  
+            <div class='hideable_billing_form'>
+              <div class="md-form mb-5">
+                <input type='text' placeholder='1234 Main St' id='street_address' name='street_address' class='form-control' required/>
+                <label for="street_address" class="">Address</label>
+              </div>
+  
+              <div class="md-form mb-5">
+                <input type='text' placeholder='Apartment or suite' id='apartment_address' name='apartment_address' class='form-control' />
+                <label for="apartment_address" class="">Address 2 (optional)</label>
+              </div>
+  
+              <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                  <label for="country" id='country' name='country'>Country</label>
+                  {{ form.country }}
+                </div>
+  
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <label for="zip">Zip</label>
+                  <input type='text' placeholder='Zip code' id='zip' name='zip' class='form-control' required/>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+            <hr>
+
+            <h5>Credit Card Information</h5> 
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Name on card</label>
+                <input type="text" class="form-control" id='CCname' name='CCname' placeholder="Full name as displayed on card" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input type="text" class="form-control" id='CCnumber' name='CCnumber' placeholder=" Credit card number as displayed on card" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id='expiration' name='expiration' placeholder=" MM/YY" required>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id='cvv' name='cvv'placeholder="123" required>
+              </div>
+              <hr class="mb-2">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
+          </form>
+
+        </div> 
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+  </div>
+</main>
+<!--Main layout-->
+
+{% endblock content %}
